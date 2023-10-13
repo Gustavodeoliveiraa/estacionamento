@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamento</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    <script src="{% static "javascript.js" %}"></script>
+</head>
+<body>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Carro</th>
+                    <th>Placa</th>
+                    <th>Data de Entrada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% comment %} no js td estao fora da tabela, ver o motivo {% endcomment %}
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="message">
+    </div>
+    <div class="screen">
+        <button class="voltar">Voltar</button>
+
+        {% block form %}
+            <div class="box">
+                Modelo
+                <form action="{% url "cadastra" %}" class="form" method="GET" >
+                    <input type="text" placeholder="Digite o modelo" name="modelo">
+                    placa <input type="text" placeholder="Digite a placa" name="placa">
+                    <div class="buttons">
+                        <input type="submit" value="Pesquisar" id="Pesquisar">
+                        <input type="submit" value="Cadastrar" id="cadastro">
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+        {% endblock form %}
+
+    </div>
+</body>
+</html>
